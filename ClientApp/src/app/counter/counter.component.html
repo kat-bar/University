@@ -1,0 +1,71 @@
+<script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+<h1>Перечень студентов</h1>
+<input type="button" value="Добавить" class="btn btn-default" (click)="add()" />
+<table *ngIf="tableMode; else create" class="table table-striped">
+  <thead>
+    <tr>
+      <td>ФИО студента</td>
+      <td>Группа</td>
+      <td>Телефон</td>
+      <td>Фото</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of students">
+      <ng-template [ngIf]="student?.StudentId != p.StudentId" [ngIfElse]="edit">
+        <td>{{p?.Name}}</td>
+        <td>{{p?.GroupId}}</td>
+        <td>{{p?.Phone}}</td>
+        <td>{{p?.Photo}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="editStudent(p)">Изменить</button>
+        </td>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
+
+<!--шаблон для редактирования-->
+<ng-template #edit>
+  <td>
+    <input type="text" [(ngModel)]="student.Name" class="form-control" />
+  </td>
+  <td>
+    <input type="number" [(ngModel)]="student.GroupId" class="form-control" />
+  </td>
+  <td>
+    <input type="tel" [(ngModel)]="student.Phone" class="form-control" />
+  </td>
+  <td>
+    <input type="image" [(ngModel)]="student.Photo" class="form-control" />
+  </td>
+  <td>
+    <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
+    <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning" />
+  </td>
+</ng-template>
+
+<!--шаблон для добавления-->
+<ng-template #create>
+  <div class="form-group">
+    <label>ФИО студента</label>
+    <input type="text" [(ngModel)]="student.Name" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Группа</label>
+    <input type="number" [(ngModel)]="student.GroupId" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Телефон</label>
+    <input type="tel" [(ngModel)]="student.Phone" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Фото</label>
+    <input type="image" [(ngModel)]="student.Photo" class="form-control" />
+  </div>
+  <div>
+    <input type="button" value="Сохранить" (click)="save()" class="btn btn-success" />
+    <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+  </div>
+</ng-template>

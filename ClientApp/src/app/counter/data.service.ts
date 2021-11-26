@@ -13,10 +13,10 @@ export class DataService {
   }
 
   createStudent(student: Student) {
-    return this.http.post("/WeatherForecast/Save", student);
+    return this.http.post("/WeatherForecast/SaveFile", student);
   }
   updateStudent(student: Student) {
 
-    return this.http.put("/WeatherForecast/Update", student);
+    return this.http.put("/WeatherForecast/UpdateStudent", student);
   }
 }

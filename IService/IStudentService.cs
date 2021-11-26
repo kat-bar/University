@@ -6,7 +6,7 @@ namespace University.IService
     public interface IStudentService
     {
         Student Save(Student oStudent);
-        Student GetSavedStudent();
+        IEnumerable<Student> GetSavedStudent();
         Student Update(Student oStudent);
     }
 }

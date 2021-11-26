@@ -11,6 +11,5 @@ namespace University.Models
         public string Name { get; set; }
         public int GroupId { get; set; }
         public int Phone { get; set; }
-        public byte[] Photo { get; set; }
     }
 }

@@ -77,9 +77,6 @@ namespace University.Migrations
                     b.Property<int>("Phone")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)");
-
                     b.HasKey("StudentId");
 
                     b.ToTable("Students");

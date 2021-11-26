@@ -3,6 +3,6 @@ export class Student {
     public StudentId?: number,
     public Name?: string,
     public GroupId?: number,
-    public Phone?: number,
-    public Photo?: ImageData) { }
+    public Phone?: number
+  ) { }
 }

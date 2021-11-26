@@ -25,7 +25,7 @@ namespace University.Service
             return oGroup;
         }
 
-        public Group Update(Group oGroup)
+        public Group UpdateGroup(Group oGroup)
         {
             _context.Groups.Update(oGroup);
             _context.SaveChanges();

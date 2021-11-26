@@ -20,9 +20,9 @@ namespace University.Service
             _context.SaveChanges();
             return oStudent;
         }
-        public Student GetSavedStudent()
+        public IEnumerable<Student> GetSavedStudent()
         {
-            return _context.Students.SingleOrDefault();
+            return _context.Students.ToList();
         }
         public Student Update(Student oStudent)
         {

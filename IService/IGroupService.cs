@@ -8,6 +8,6 @@ namespace University.IService
     {
         Group SaveGroup(Group oGroup);
         IEnumerable<Group> GetSavedGroup();
-        Group Update(Group oGroup);
+        Group UpdateGroup(Group oGroup);
     }
 }

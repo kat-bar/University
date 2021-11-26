@@ -5,9 +5,8 @@
   <thead>
     <tr>
       <td>ФИО студента</td>
-      <td>Группа</td>
+      <td>ID Группы</td>
       <td>Телефон</td>
-      <td>Фото</td>
       <td></td>
     </tr>
   </thead>
@@ -17,7 +16,6 @@
         <td>{{p?.Name}}</td>
         <td>{{p?.GroupId}}</td>
         <td>{{p?.Phone}}</td>
-        <td>{{p?.Photo}}</td>
         <td>
           <button class="btn btn-sm btn-primary" (click)="editStudent(p)">Изменить</button>
         </td>
@@ -38,9 +36,6 @@
     <input type="tel" [(ngModel)]="student.Phone" class="form-control" />
   </td>
   <td>
-    <input type="image" [(ngModel)]="student.Photo" class="form-control" />
-  </td>
-  <td>
     <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
     <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning" />
   </td>
@@ -53,16 +48,12 @@
     <input type="text" [(ngModel)]="student.Name" class="form-control" />
   </div>
   <div class="form-group">
-    <label>Группа</label>
+    <label>ID Группы</label>
     <input type="number" [(ngModel)]="student.GroupId" class="form-control" />
   </div>
   <div class="form-group">
     <label>Телефон</label>
     <input type="tel" [(ngModel)]="student.Phone" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label>Фото</label>
-    <input type="image" [(ngModel)]="student.Photo" class="form-control" />
   </div>
   <div>
     <input type="button" value="Сохранить" (click)="save()" class="btn btn-success" />

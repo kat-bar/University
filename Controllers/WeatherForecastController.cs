@@ -26,45 +26,25 @@ namespace University.Controllers
             return View();
         }
         [HttpPost]
-        public string SaveFile([FromBody]  FileUpload fileObj)
+        public IActionResult SaveFile([FromBody] Student oStudent)
         {
-            Student oStudent = JsonConvert.DeserializeObject<Student>(fileObj.Student);
+            oStudent = _studentService.Save(oStudent);
 
-            if (fileObj.file.Length > 0)
+            if (oStudent.GroupId > 0)
             {
-                using (var ms = new MemoryStream())
-                {
-                    fileObj.file.CopyTo(ms);
-                    var fileBytes = ms.ToArray();
-                    oStudent.Photo = fileBytes;
-
-                    oStudent = _studentService.Save(oStudent);
-                    if (oStudent.StudentId > 0)
-                    {
-                        return "Saved";
-                    }
-                }
+                return Ok(oStudent);
             }
-            return "Failed";
+            return BadRequest(ModelState);
         }
 
         [HttpGet]
-        public Student GetSavedStudent()
+        public IEnumerable<Student> GetSavedStudent()
         {
-            var student = _studentService.GetSavedStudent();
-            student.Photo = this.GetImage(Convert.ToBase64String(student.Photo));
-            return student;
+            var students = _studentService.GetSavedStudent();
+            return students;
         }
 
-        public byte[] GetImage(string sBase64String)
-        {
-            byte[] bytes = null;
-            if (!string.IsNullOrEmpty(sBase64String))
-            {
-                bytes = Convert.FromBase64String(sBase64String);
-            }
-            return bytes;
-        }
+       
         [HttpPost]
         public IActionResult SaveGroup([FromBody]  Group oGroup)
         {
@@ -85,16 +65,28 @@ namespace University.Controllers
         }
 
         [HttpPut]
-        public string Update([FromBody] Group oGroup)
+        public IActionResult UpdateGroup([FromBody] Group oGroup)
         {
-            oGroup = _groupService.Update(oGroup);
-            return "Saved";
+            oGroup = _groupService.UpdateGroup(oGroup);
+
+            if (oGroup.GroupId > 0)
+            {
+                return Ok(oGroup);
+            }
+            return BadRequest(ModelState);
         }
+    
         [HttpPut]
-        public string Update([FromBody] Student oStudent)
+        public IActionResult UpdateStudent([FromBody] Student oStudent)
         {
             oStudent = _studentService.Update(oStudent);
-            return "Saved";
+
+            if (oStudent.StudentId > 0)
+            {
+                return Ok(oStudent);
+            }
+            return BadRequest(ModelState);
         }
     }
-}
+ }
+

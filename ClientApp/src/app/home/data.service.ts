@@ -17,6 +17,6 @@ export class DataService {
     }
     updateGroup(group: Group) {
 
-      return this.http.put("/WeatherForecast/Update", group);
+      return this.http.put("/WeatherForecast/UpdateGroup", group);
     }
 }

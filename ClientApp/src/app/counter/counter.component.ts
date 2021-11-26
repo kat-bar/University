@@ -19,14 +19,11 @@ export class CounterComponent {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.loadGroup();    // загрузка данных при старте компонента  
+    this.loadStudent();    // загрузка данных при старте компонента  
   }
   // получаем данные через сервис
-  loadGroup() {
-    //this.dataService.getGroups()
-    //  .subscribe(data => {
-    //    this.groups = Array.of(data);
-    //  })
+  loadStudent() {
+   
     this.dataService.getStudents()
       .subscribe((data: Student[]) => this.students = data);
   }
@@ -37,7 +34,7 @@ export class CounterComponent {
         .subscribe((data: Student) => this.students.push(data));
     } else {
       this.dataService.updateStudent(this.student)
-        .subscribe(data => this.loadGroup());
+        .subscribe(data => this.loadStudent());
     }
     this.cancel();
   }

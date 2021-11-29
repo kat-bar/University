@@ -7,7 +7,7 @@
       <td>Название группы</td>
       <td>Год</td>
       <td>Специальность</td>
-      <td>ID Куратора</td>
+      <td>Куратор</td>
       <td>Курс</td>
       <td></td>
     </tr>
@@ -40,10 +40,11 @@
     <input type="text" [(ngModel)]="group.Speciality" class="form-control" />
   </td>
   <td>
-    <input type="number" [(ngModel)]="group.TeacherId" class="form-control" />
+    <select>
+      <option type="text" [(ngModel)]="group.TeacherId" class="form-control"></option></select>
   </td>
   <td>
-    <input type="number" [(ngModel)]="group.CursId" class="form-control" />
+      <input type="text" [(ngModel)]="group.CursId" class="form-control"/>
   </td>
   <td>
     <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
@@ -66,12 +67,14 @@
     <input type="text" [(ngModel)]="group.Speciality" class="form-control" />
   </div>
   <div class="form-group">
-    <label>ID Куратора</label>
-    <input type="number" [(ngModel)]="group.TeacherId" class="form-control" />
+    <label>Куратор</label>
+    <select>
+      <option type="text" [(ngModel)]="group.TeacherId" class="form-control"></option>
+    </select>
   </div>
   <div class="form-group">
     <label>Курс</label>
-    <input type="number" [(ngModel)]="group.CursId" class="form-control" />
+    <input type="text" [(ngModel)]="group.CursId" class="form-control" />
   </div>
   <div>
     <input type="button" value="Сохранить" (click)="save()" class="btn btn-success" />

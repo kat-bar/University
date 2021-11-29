@@ -7,7 +7,11 @@ namespace University.Context
     {
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
-
+            Database.EnsureCreated();
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Seed();
         }
         public DbSet<Student> Students { get; set; }
         public DbSet<Group> Groups { get; set; }

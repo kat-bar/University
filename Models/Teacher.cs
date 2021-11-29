@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace University.Models
@@ -9,5 +10,6 @@ namespace University.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TeacherId { get; set; }
         public string TeacherName { get; set; }
+        
     }
 }

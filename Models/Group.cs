@@ -11,7 +11,7 @@ namespace University.Models
         public string GroupName { get; set; }
         public int Yers { get; set; }
         public string Speciality { get; set; }
-        public int TeacherId { get; set; }
-        public int CursId { get; set; }
+        public int? TeacherId { get; set; }  
+        public int? CursId { get; set; }
     }
 }

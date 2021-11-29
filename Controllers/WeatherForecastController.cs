@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
+using University.Context;
 using University.IService;
 using University.Models;
 
@@ -16,6 +12,8 @@ namespace University.Controllers
     {
         IStudentService _studentService = null;
         IGroupService _groupService = null;
+
+       
         public WeatherForecastController(IStudentService studentService, IGroupService groupService)
         {
             _studentService = studentService; 
@@ -44,15 +42,16 @@ namespace University.Controllers
             return students;
         }
 
-       
+
+
         [HttpPost]
-        public IActionResult SaveGroup([FromBody]  Group oGroup)
+        public IActionResult SaveGroup([FromBody] Group GroupTeachers)
         {
-            oGroup = _groupService.SaveGroup(oGroup);
+            GroupTeachers = _groupService.SaveGroup(GroupTeachers);
                 
-            if (oGroup.GroupId > 0)
+            if (GroupTeachers.GroupId > 0)
             {
-                return Ok(oGroup);
+                return Ok(GroupTeachers);
             }
             return BadRequest(ModelState);
         }

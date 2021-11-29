@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Group } from './group';
+import { Group } from './groupTeacher';
 
 @Injectable()
 export class DataService {
@@ -10,12 +10,13 @@ export class DataService {
 
   getGroups() {
     return this.http.get("/WeatherForecast/GetSavedGroup");
-    }
+  }
 
-    createGroup(group: Group) {
+
+  createGroup(group: Group) {
       return this.http.post("/WeatherForecast/SaveGroup", group);
     }
-    updateGroup(group: Group) {
+  updateGroup(group: Group) {
 
       return this.http.put("/WeatherForecast/UpdateGroup", group);
     }

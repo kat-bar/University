@@ -30,7 +30,8 @@ namespace University
             {
                 configuration.RootPath = "ClientApp/dist";
             });
-            services.AddDbContext<DatabaseContext>(o => o.UseSqlServer(Configuration.GetConnectionString("University")));
+            string connectionString = "Server=(localdb)\\mssqllocaldb;Database=db;Trusted_Connection=True;";
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<IGroupService, GroupService>();
             services.AddControllersWithViews()

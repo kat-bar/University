@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from './data.service';
-import { Group } from './group';
+import { Group } from './groupTeacher';
 import { Teacher } from './teacher';
 
 @Component({
@@ -11,9 +11,11 @@ import { Teacher } from './teacher';
 export class HomeComponent {
   group: Group = new Group();
   groups: Group[];
+  teacher: Teacher = new Teacher();
   tableMode: boolean = true;          // табличный режим
 
   constructor(private dataService: DataService) { }
+
 
   ngOnInit() {
     this.loadGroup();    // загрузка данных при старте компонента  
@@ -27,6 +29,8 @@ export class HomeComponent {
     this.dataService.getGroups()
       .subscribe((data: Group[]) => this.groups = data);
   }
+
+    
   // сохранение данных
   save() {
     if (this.group.GroupId == null) {

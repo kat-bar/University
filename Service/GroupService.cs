@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using University.Context;
@@ -9,26 +10,27 @@ namespace University.Service
 {
     public class GroupService : IGroupService
     {
-        private readonly DatabaseContext _context;
+        private readonly DatabaseContext db;
         public GroupService(DatabaseContext context)
         {
-            _context = context;
+            db = context;
+            db.SaveChanges();
         }
         public IEnumerable<Group> GetSavedGroup()
         {
-            return _context.Groups.ToList();
+            return db.Groups.ToList();
         }
         public Group SaveGroup(Group oGroup)
         {
-            _context.Groups.Add(oGroup);
-            _context.SaveChanges();
+            db.Groups.Add(oGroup);
+            db.SaveChanges();
             return oGroup;
         }
 
         public Group UpdateGroup(Group oGroup)
         {
-            _context.Groups.Update(oGroup);
-            _context.SaveChanges();
+            db.Groups.Update(oGroup);
+            db.SaveChanges();
             return oGroup;
         }
     }
